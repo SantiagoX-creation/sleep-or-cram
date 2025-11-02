@@ -562,7 +562,8 @@ export default function SleepOrCram() {
               type="time"
               value={currentTime}
               onChange={(e) => setCurrentTime(e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
+              className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base appearance-none"
+              style={{ maxWidth: '100%' }}
             />
           </div>
 
@@ -574,7 +575,8 @@ export default function SleepOrCram() {
               type="time"
               value={examTime}
               onChange={(e) => setExamTime(e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
+              className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base appearance-none"
+              style={{ maxWidth: '100%' }}
             />
           </div>
 
@@ -588,7 +590,7 @@ export default function SleepOrCram() {
               onChange={(e) => setHoursStudied(Math.max(0, parseInt(e.target.value) || 0))}
               min="0"
               max="12"
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
+              className="w-full px-3 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
             />
           </div>
 
