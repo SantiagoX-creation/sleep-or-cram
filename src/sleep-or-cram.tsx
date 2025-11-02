@@ -180,19 +180,19 @@ export default function SleepOrCram() {
     setResult(null);
   };
 
-  const getDecisionColor = (decision: 'sleep' | 'strategic-cram') => {
+  const getDecisionColor = (decision: string) => {
     if (decision === 'sleep') return 'bg-gradient-to-br from-teal-600 to-emerald-700';
     if (decision === 'strategic-cram') return 'bg-gradient-to-br from-blue-600 to-cyan-700';
     return 'bg-gradient-to-br from-blue-500 to-blue-700';
   };
 
-  const getDecisionIcon = (decision: 'sleep' | 'strategic-cram') => {
-    if (decision === 'sleep') return <Moon className="w-12 h-12" />;
-    if (decision === 'strategic-cram') return <Brain className="w-12 h-12" />;
-    return <BookOpen className="w-12 h-12" />;
+  const getDecisionIcon = (decision: string) => {
+    if (decision === 'sleep') return <Moon className="w-10 h-10 sm:w-12 sm:h-12" />;
+    if (decision === 'strategic-cram') return <Brain className="w-10 h-10 sm:w-12 sm:h-12" />;
+    return <BookOpen className="w-10 h-10 sm:w-12 sm:h-12" />;
   };
 
-  const getDecisionTitle = (decision: 'sleep' | 'strategic-cram') => {
+  const getDecisionTitle = (decision: string) => {
     if (decision === 'sleep') return 'Sleep Now';
     if (decision === 'strategic-cram') return 'Strategic Study + Sleep';
     return 'Cram Time';
@@ -204,25 +204,25 @@ export default function SleepOrCram() {
     };
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-cyan-700 p-6 flex items-center justify-center">
-        <div className="max-w-2xl w-full bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
-          <div className="text-center mb-8">
-            <Brain className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-700 to-teal-600 bg-clip-text text-transparent mb-2">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-cyan-700 p-4 sm:p-6 flex items-center justify-center">
+        <div className="max-w-2xl w-full bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-4 sm:p-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <Brain className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-blue-600" />
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-700 to-teal-600 bg-clip-text text-transparent mb-2">
               Confidence Check
             </h2>
-            <p className="text-slate-600">
+            <p className="text-sm sm:text-base text-slate-600">
               Answer these questions honestly to calibrate your true readiness
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Question 1 */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-200">
-              <h3 className="font-bold text-lg text-slate-800 mb-4">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 sm:p-6 border border-blue-200">
+              <h3 className="font-bold text-base sm:text-lg text-slate-800 mb-3 sm:mb-4">
                 1. If someone asked you to explain the core concept right now, you would:
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {[
                   { value: 0, label: 'Struggle significantly or freeze up', color: 'from-teal-400 to-cyan-500' },
                   { value: 33, label: 'Give a vague or incomplete explanation', color: 'from-teal-500 to-emerald-500' },
@@ -232,16 +232,16 @@ export default function SleepOrCram() {
                   <button
                     key={option.value}
                     onClick={() => setQuizAnswers({ ...quizAnswers, q1: option.value })}
-                    className={`w-full p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
+                    className={`w-full p-3 sm:p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
                       quizAnswers.q1 === option.value
                         ? `bg-gradient-to-r ${option.color} text-white shadow-lg scale-102 border-2 border-white`
                         : 'bg-white hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 border-2 border-slate-200 text-slate-700'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium">{option.label}</span>
+                      <span className="font-medium text-sm sm:text-base">{option.label}</span>
                       {quizAnswers.q1 === option.value && (
-                        <span className="text-xl">✓</span>
+                        <span className="text-lg sm:text-xl">✓</span>
                       )}
                     </div>
                   </button>
@@ -250,11 +250,11 @@ export default function SleepOrCram() {
             </div>
 
             {/* Question 2 */}
-            <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-xl p-6 border border-teal-200">
-              <h3 className="font-bold text-lg text-slate-800 mb-4">
+            <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-xl p-4 sm:p-6 border border-teal-200">
+              <h3 className="font-bold text-base sm:text-lg text-slate-800 mb-3 sm:mb-4">
                 2. Without looking at your notes, how much of the material can you actively recall?
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {[
                   { value: 0, label: 'Less than 25% - mostly blanks', color: 'from-teal-400 to-cyan-500' },
                   { value: 33, label: 'About 25-50% - recognize but can\'t reproduce', color: 'from-teal-500 to-emerald-500' },
@@ -264,16 +264,16 @@ export default function SleepOrCram() {
                   <button
                     key={option.value}
                     onClick={() => setQuizAnswers({ ...quizAnswers, q2: option.value })}
-                    className={`w-full p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
+                    className={`w-full p-3 sm:p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
                       quizAnswers.q2 === option.value
                         ? `bg-gradient-to-r ${option.color} text-white shadow-lg scale-102 border-2 border-white`
                         : 'bg-white hover:bg-gradient-to-r hover:from-teal-50 hover:to-emerald-50 border-2 border-slate-200 text-slate-700'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium">{option.label}</span>
+                      <span className="font-medium text-sm sm:text-base">{option.label}</span>
                       {quizAnswers.q2 === option.value && (
-                        <span className="text-xl">✓</span>
+                        <span className="text-lg sm:text-xl">✓</span>
                       )}
                     </div>
                   </button>
@@ -282,11 +282,11 @@ export default function SleepOrCram() {
             </div>
 
             {/* Question 3 */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 border border-cyan-200">
-              <h3 className="font-bold text-lg text-slate-800 mb-4">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 sm:p-6 border border-cyan-200">
+              <h3 className="font-bold text-base sm:text-lg text-slate-800 mb-3 sm:mb-4">
                 3. If you had to solve a practice problem similar to the exam right now:
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {[
                   { value: 0, label: 'Wouldn\'t know where to start', color: 'from-teal-400 to-cyan-500' },
                   { value: 33, label: 'Could start but would get stuck quickly', color: 'from-teal-500 to-emerald-500' },
@@ -296,16 +296,16 @@ export default function SleepOrCram() {
                   <button
                     key={option.value}
                     onClick={() => setQuizAnswers({ ...quizAnswers, q3: option.value })}
-                    className={`w-full p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
+                    className={`w-full p-3 sm:p-4 rounded-lg text-left transition-all transform hover:scale-102 ${
                       quizAnswers.q3 === option.value
                         ? `bg-gradient-to-r ${option.color} text-white shadow-lg scale-102 border-2 border-white`
                         : 'bg-white hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 border-2 border-slate-200 text-slate-700'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium">{option.label}</span>
+                      <span className="font-medium text-sm sm:text-base">{option.label}</span>
                       {quizAnswers.q3 === option.value && (
-                        <span className="text-xl">✓</span>
+                        <span className="text-lg sm:text-xl">✓</span>
                       )}
                     </div>
                   </button>
@@ -314,30 +314,30 @@ export default function SleepOrCram() {
             </div>
           </div>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-6 sm:mt-8 flex gap-3 sm:gap-4">
             <button
               onClick={() => setStep('input')}
-              className="flex-1 bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 py-4 rounded-lg font-bold hover:from-slate-200 hover:to-slate-300 transition-all border border-slate-300"
+              className="flex-1 bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 py-3 sm:py-4 rounded-lg font-bold hover:from-slate-200 hover:to-slate-300 transition-all border border-slate-300 text-sm sm:text-base"
             >
               ← Back
             </button>
             <button
               onClick={handleQuizSubmit}
               disabled={quizAnswers.q1 === 0 && quizAnswers.q2 === 0 && quizAnswers.q3 === 0}
-              className={`flex-1 py-4 rounded-lg font-bold transition-all transform ${
+              className={`flex-1 py-3 sm:py-4 rounded-lg font-bold transition-all transform text-sm sm:text-base ${
                 quizAnswers.q1 === 0 && quizAnswers.q2 === 0 && quizAnswers.q3 === 0
                   ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
                   : 'bg-gradient-to-r from-blue-600 to-teal-600 text-white hover:from-blue-700 hover:to-teal-700 hover:scale-105 shadow-lg'
               }`}
             >
-              Get My Recommendation →
+              Get Recommendation →
             </button>
           </div>
 
-          <div className="mt-6 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg border border-cyan-200">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-slate-700">
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg border border-cyan-200">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-xs sm:text-sm text-slate-700">
                 <strong className="text-blue-700">Why these questions?</strong> Research shows that self-assessed 
                 confidence is often inaccurate. These questions measure your actual readiness through 
                 recall and application ability.
@@ -351,104 +351,104 @@ export default function SleepOrCram() {
 
   if (step === 'result' && result) {
     return (
-      <div className={`min-h-screen ${getDecisionColor(result.decision)} p-6 flex items-center justify-center`}>
+      <div className={`min-h-screen ${getDecisionColor(result.decision)} p-4 sm:p-6 flex items-center justify-center`}>
         <div className="max-w-2xl w-full">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-6">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-4 sm:p-8 mb-4 sm:mb-6">
             {/* Decision Header */}
-            <div className="text-center mb-8">
-              <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full ${
+            <div className="text-center mb-6 sm:mb-8">
+              <div className={`inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full ${
                 result.decision === 'sleep' 
                   ? 'bg-gradient-to-br from-teal-100 to-emerald-100' 
                   : 'bg-gradient-to-br from-blue-100 to-cyan-100'
-              } mb-4`}>
+              } mb-3 sm:mb-4`}>
                 <div className={result.decision === 'sleep' ? 'text-emerald-700' : 'text-blue-700'}>
                   {getDecisionIcon(result.decision)}
                 </div>
               </div>
-              <h2 className={`text-4xl font-bold mb-2 bg-gradient-to-r ${
+              <h2 className={`text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r ${
                 result.decision === 'sleep' 
                   ? 'from-teal-700 to-emerald-700' 
                   : 'from-blue-700 to-cyan-700'
               } bg-clip-text text-transparent`}>
                 {getDecisionTitle(result.decision)}
               </h2>
-              <p className="text-slate-700 text-lg">{result.reasoning}</p>
+              <p className="text-slate-700 text-sm sm:text-lg px-2">{result.reasoning}</p>
             </div>
 
             {/* Key Metrics */}
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-4 text-center border border-blue-200">
-                <div className="text-2xl font-bold text-blue-700">{result.availableHours}h</div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg p-3 sm:p-4 text-center border border-blue-200">
+                <div className="text-xl sm:text-2xl font-bold text-blue-700">{result.availableHours}h</div>
                 <div className="text-xs text-slate-600 mt-1">Available Time</div>
               </div>
-              <div className={`rounded-lg p-4 text-center border ${
+              <div className={`rounded-lg p-3 sm:p-4 text-center border ${
                 result.decision === 'sleep'
                   ? 'bg-gradient-to-br from-teal-50 to-emerald-50 border-emerald-200'
                   : 'bg-gradient-to-br from-cyan-50 to-blue-50 border-cyan-200'
               }`}>
-                <div className={`text-2xl font-bold ${
+                <div className={`text-xl sm:text-2xl font-bold ${
                   result.decision === 'sleep' ? 'text-emerald-700' : 'text-cyan-700'
                 }`}>
                   +{result.projectedBoost}%
                 </div>
                 <div className="text-xs text-slate-600 mt-1">Projected Boost</div>
               </div>
-              <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-lg p-4 text-center border border-teal-200">
-                <div className="text-2xl font-bold text-teal-700">{result.cognitiveState}%</div>
+              <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-lg p-3 sm:p-4 text-center border border-teal-200">
+                <div className="text-xl sm:text-2xl font-bold text-teal-700">{result.cognitiveState}%</div>
                 <div className="text-xs text-slate-600 mt-1">Cognitive State</div>
               </div>
             </div>
 
             {/* Action Plan */}
-            <div className={`rounded-xl p-6 mb-6 ${
+            <div className={`rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 ${
               result.decision === 'sleep'
                 ? 'bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200'
                 : 'bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200'
             }`}>
-              <h3 className={`font-bold text-xl mb-4 ${
+              <h3 className={`font-bold text-lg sm:text-xl mb-3 sm:mb-4 ${
                 result.decision === 'sleep' ? 'text-emerald-800' : 'text-blue-800'
               }`}>
                 Your Action Plan
               </h3>
-              <ol className="space-y-3">
-                {result.actionPlan.map((step: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white ${
+              <ol className="space-y-2 sm:space-y-3">
+                {result.actionPlan.map((step, idx) => (
+                  <li key={idx} className="flex items-start gap-2 sm:gap-3">
+                    <span className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white ${
                       result.decision === 'sleep'
                         ? 'bg-gradient-to-br from-emerald-600 to-teal-600'
                         : 'bg-gradient-to-br from-blue-600 to-cyan-600'
                     }`}>
                       {idx + 1}
                     </span>
-                    <span className="text-slate-700 pt-0.5 flex-1">{step}</span>
+                    <span className="text-slate-700 pt-0.5 flex-1 text-sm sm:text-base">{step}</span>
                   </li>
                 ))}
               </ol>
             </div>
 
             {/* Science Note */}
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 mb-6 border border-cyan-200">
-              <div className="flex items-start gap-3">
-                <Brain className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-cyan-200">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-blue-800 mb-2">The Science Behind This Decision</h4>
-                  <p className="text-sm text-slate-700 leading-relaxed">{result.scienceNote}</p>
+                  <h4 className="font-bold text-blue-800 mb-2 text-sm sm:text-base">The Science Behind This Decision</h4>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{result.scienceNote}</p>
                 </div>
               </div>
             </div>
 
             {/* Decision Analysis Box */}
-            <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 mb-6 border border-slate-200">
-              <h3 className="font-bold text-xl mb-4 flex items-center gap-2 text-slate-800">
-                <TrendingUp className="w-5 h-5 text-blue-600" />
+            <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-slate-200">
+              <h3 className="font-bold text-lg sm:text-xl mb-3 sm:mb-4 flex items-center gap-2 text-slate-800">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                 Decision Analysis
               </h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-3 sm:mb-4">
                 We compared both strategies mathematically. Here's why we chose this plan:
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {/* Chosen Plan */}
-                <div className={`rounded-lg p-4 ${
+                <div className={`rounded-lg p-3 sm:p-4 ${
                   result.decision === 'sleep' 
                     ? 'bg-gradient-to-br from-emerald-100 to-teal-100 border-2 border-emerald-400' 
                     : 'bg-gradient-to-br from-blue-100 to-cyan-100 border-2 border-blue-400'
@@ -458,12 +458,12 @@ export default function SleepOrCram() {
                   }`}>
                     ✓ Chosen Plan
                   </div>
-                  <div className={`font-bold text-lg mb-3 ${
+                  <div className={`font-bold text-base sm:text-lg mb-2 sm:mb-3 ${
                     result.decision === 'sleep' ? 'text-emerald-900' : 'text-blue-900'
                   }`}>
                     {result.decision === 'sleep' ? 'Max Sleep' : 'Strategic Study'}
                   </div>
-                  <div className="space-y-2 text-sm text-slate-700">
+                  <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-slate-700">
                     <div className="flex justify-between">
                       <span>Total Boost:</span>
                       <span className="font-bold">{result.decision === 'sleep' ? `+${result.boostS1}%` : `+${result.boostS2}%`}</span>
@@ -489,14 +489,14 @@ export default function SleepOrCram() {
                 </div>
 
                 {/* Alternative Plan */}
-                <div className="bg-gradient-to-br from-slate-100 to-slate-50 border-2 border-slate-300 rounded-lg p-4">
+                <div className="bg-gradient-to-br from-slate-100 to-slate-50 border-2 border-slate-300 rounded-lg p-3 sm:p-4">
                   <div className="text-xs font-bold uppercase mb-2 text-slate-500">
                     Alternative
                   </div>
-                  <div className="font-bold text-lg mb-3 text-slate-700">
+                  <div className="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-slate-700">
                     {result.decision === 'sleep' ? 'Strategic Study' : 'Max Sleep'}
                   </div>
-                  <div className="space-y-2 text-sm text-slate-600">
+                  <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-slate-600">
                     <div className="flex justify-between">
                       <span>Total Boost:</span>
                       <span className="font-bold">{result.decision === 'sleep' ? `+${result.boostS2}%` : `+${result.boostS1}%`}</span>
@@ -521,14 +521,14 @@ export default function SleepOrCram() {
                   </div>
                 </div>
               </div>
-              <div className="mt-4 text-xs text-slate-600">
+              <div className="mt-3 sm:mt-4 text-xs text-slate-600">
                 The chosen plan provides a <strong className="text-slate-800">{Math.abs(result.boostS1 - result.boostS2)}% higher</strong> projected score boost based on your cognitive state, time available, and true readiness level.
               </div>
             </div>
 
             <button
               onClick={resetApp}
-              className="w-full bg-gradient-to-r from-slate-700 to-slate-800 text-white py-3 rounded-lg font-bold hover:from-slate-800 hover:to-slate-900 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="w-full bg-gradient-to-r from-slate-700 to-slate-800 text-white py-3 rounded-lg font-bold hover:from-slate-800 hover:to-slate-900 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base"
             >
               New Decision
             </button>
@@ -539,21 +539,21 @@ export default function SleepOrCram() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-cyan-700 p-6 flex items-center justify-center">
-      <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
-        <div className="text-center mb-8">
-          <div className="flex justify-center gap-4 mb-4">
-            <Moon className="w-10 h-10 text-teal-600" />
-            <div className="text-2xl font-bold text-slate-400">or</div>
-            <BookOpen className="w-10 h-10 text-blue-600" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-cyan-700 p-4 sm:p-6 flex items-center justify-center">
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <Moon className="w-8 h-8 sm:w-10 sm:h-10 text-teal-600" />
+            <div className="text-xl sm:text-2xl font-bold text-slate-400">or</div>
+            <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-700 to-teal-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-700 to-teal-600 bg-clip-text text-transparent mb-2">
             Sleep or Cram?
           </h1>
-          <p className="text-slate-600">Science-backed decision tool for students</p>
+          <p className="text-sm sm:text-base text-slate-600">Science-backed decision tool for students</p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-5 sm:space-y-6">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Current Time
@@ -562,7 +562,7 @@ export default function SleepOrCram() {
               type="time"
               value={currentTime}
               onChange={(e) => setCurrentTime(e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80"
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
             />
           </div>
 
@@ -574,7 +574,7 @@ export default function SleepOrCram() {
               type="time"
               value={examTime}
               onChange={(e) => setExamTime(e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80"
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
             />
           </div>
 
@@ -588,7 +588,7 @@ export default function SleepOrCram() {
               onChange={(e) => setHoursStudied(Math.max(0, parseInt(e.target.value) || 0))}
               min="0"
               max="12"
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80"
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/80 text-base"
             />
           </div>
 
@@ -606,20 +606,22 @@ export default function SleepOrCram() {
             />
             <div className="flex justify-between text-xs text-slate-500 mt-1">
               <span>Lost</span>
-              <span>Somewhat ready</span>
-              <span>Very confident</span>
+              <span className="hidden sm:inline">Somewhat ready</span>
+              <span className="sm:hidden">Ready</span>
+              <span className="hidden sm:inline">Very confident</span>
+              <span className="sm:hidden">Confident</span>
             </div>
           </div>
 
           <button
             onClick={() => setStep('quiz')}
-            className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white py-4 rounded-lg font-bold hover:from-blue-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white py-3 sm:py-4 rounded-lg font-bold hover:from-blue-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
           >
             Continue to Confidence Check
           </button>
         </div>
 
-        <div className="mt-6 text-center text-xs text-slate-500">
+        <div className="mt-5 sm:mt-6 text-center text-xs text-slate-500">
           <Clock className="w-4 h-4 inline mr-1 text-blue-600" />
           Based on sleep science & cognitive performance research
         </div>
